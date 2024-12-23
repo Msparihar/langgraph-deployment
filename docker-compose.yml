@@ -1,0 +1,13 @@
+version: "3.8"
+
+services:
+  fastapi:
+    build: .
+    image: langflow-deployment
+    container_name: langflow-server
+    ports:
+      - "8000:8000"
+    environment:
+      - FLOW_SERVICE_URL=http://host.docker.internal:7860
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
